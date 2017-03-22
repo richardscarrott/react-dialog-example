@@ -1,10 +1,15 @@
+body {
+    background: red;
+}
+
 .root {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 90%;
-    max-width: 500px;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*right: 50%;*/
+    /*transform: translate(50%, -50%);*/
+    /*width: 90%;*/
+    /*max-width: 500px;*/
+    /*background: red;*/
 }
 
 .logo {
