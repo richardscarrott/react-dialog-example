@@ -1,0 +1,6 @@
+exports[`components/notfound/NotFound renders correctly 1`] = `
+<div
+  className="root">
+  404 Not Found
+</div>
+`;
