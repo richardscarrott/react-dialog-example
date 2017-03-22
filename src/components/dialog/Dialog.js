@@ -1,12 +1,21 @@
 import React from 'react';
+import { Gateway } from 'react-gateway';
 import styles from 'components/dialog/Dialog.css';
 
-function Dialog({ message, children }) {
+function Dialog({ message, style, children }) {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} style={style}>
       {message}
     </div>
   );
 }
 
-export default Dialog;
+function DialogWithGateway({ name, ...rest }) {
+  return (
+    <Gateway into="dialog">
+      <Dialog {...rest} key={name} />
+    </Gateway>
+  );
+}
+
+export default DialogWithGateway;
