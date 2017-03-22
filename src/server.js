@@ -53,13 +53,12 @@ function render(stats, renderProps, store) {
   const js = getJsFromStats(stats);
   const css = getCssFromStats(stats);
 
-  // const markup = renderToString(
-  //   <Provider store={store}>
-  //     <RouterContext {...renderProps} />
-  //   </Provider>
-  // );
-  const markup = '';
-
+  const markup = renderToString(
+    <Provider store={store}>
+      <RouterContext {...renderProps} />
+    </Provider>
+  );
+  // const markup = '';
   const head = Helmet.rewind();
 
   const html = renderToStaticMarkup(

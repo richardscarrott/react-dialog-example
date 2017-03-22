@@ -10,11 +10,11 @@ import styles from './DialogTransition';
 //   );
 // }
 function willLeave() {
-  return { opacity: spring(0) };
+  return { springValue: spring(0) };
 }
 
 function willEnter() {
-  return { opacity: 0 };
+  return { springValue: 0 };
 }
 
 // React.Children.count(children)
@@ -31,13 +31,9 @@ function DialogTransition({ children }) {
   return (
     <TransitionMotion
       styles={React.Children.map(children, el => {
-          console.log(el);
-          if (!el.key) {
-            throw new Error('<Dialog /> must be given a key');
-          }
           return {
             key: el.key,
-            style: { opacity: spring(1) },
+            style: { springValue: spring(1) },
             data: { component: el }
           };
         })}
@@ -48,14 +44,14 @@ function DialogTransition({ children }) {
           return (
             <div>
               {interpolatedStyles.map(config => {
-                  console.log(config);
+                  console.log(config.style.springValue);
+                  const f = React.cloneElement(config.data.component, {
+                    springValue: config.style.springValue
+                  });
+                  console.log(f, '<--');
                   return (
-                    <div
-                      key={config.key}
-                      className={styles.root}
-                      style={{ opacity: config.style.opacity }}
-                    >
-                      {config.data.component}
+                    <div key={config.key}>
+                      {f}
                     </div>
                   );
                 })}
